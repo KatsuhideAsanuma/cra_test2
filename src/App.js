@@ -25,7 +25,7 @@ function App(props) {
       <ul>
         {props.todos.map(todo=>{
           return(
-            <li key={todo}>{todo}</li>
+            <li key={todo}><span>{todo}</span><button onClick={()=>props.dispatch(removeToDo(todo))}>DEL</button></li>
           )
         })}
       </ul>
