@@ -5,12 +5,12 @@ import './App.css';
 function Container(){
     const container=useRef(null)
     const [parentBoundary,setParentBoundary]=useState([])
-    const prevState=useRef(parentBoundary)
+    const prevState=useRef(null)
     useEffect(()=>{
         console.log("parentBoundary : ",parentBoundary)
         const boundary=container.current.getBoundingClientRect()
         console.log(JSON.stringify(boundary))
-        if (JSON.stringify(boundary) !==JSON.stringify(prevState.current)|parentBoundary.length===0){
+        if (JSON.stringify(boundary) !==JSON.stringify(prevState.current)){
             console.log("setParentBoundary")
             setParentBoundary([boundary.top,boundary.right,boundary.bottom,boundary.left])
             prevState.current=boundary
