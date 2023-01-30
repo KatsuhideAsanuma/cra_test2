@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 //import { bindActionCreators } from 'redux';
 import {addToDo,removeToDo} from './actions';
+import Container from './Container';
 
 
 import './App.css';
@@ -31,6 +32,7 @@ function App(props) {
       </ul>
       <input type="text" onChange={e=>setInput(e.target.value)}/>
       <button onClick={()=>props.addToDo(input)}>submit</button>
+      <Container/>
     </div>
   );
 }
