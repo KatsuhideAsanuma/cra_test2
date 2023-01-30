@@ -11,7 +11,7 @@ export function todos(state={
         case "REMOVE_TO_DO":
             return Object.assign({},state,{
                 list:state.list.filter(todo=>{
-                    if(action.todo!=todo){
+                    if(action.todo!==todo){
                         return true;
                     }else{
                         return false;
@@ -23,6 +23,20 @@ export function todos(state={
     }
 }
 
+export function changeBoundary(state={
+    boundary:[]
+},action){
+    switch(action.type){
+        case "CHANGE_BOUNDARY":
+            return Object.assign({},state,{
+                boundary:state.boundary.concat(action.boundary)
+            })
+        default:
+            return state;
+    }
+}
+
 export default combineReducers({
-    todos
+    todos,
+    changeBoundary
 })

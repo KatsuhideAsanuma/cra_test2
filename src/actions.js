@@ -12,3 +12,10 @@ export function removeToDo(todo){
         todo
     }
 }
+export function changeBoundary(boundary){
+    console.log('CHANGE_BOUNDARY ',boundary)
+    return{
+        type:'CHANGE_BOUNDARY',
+        boundary
+    }    
+}

@@ -1,17 +1,30 @@
-import { Suspense, useEffect, useRef } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import Card from './Card';
 import './App.css';
 
-function Container(props){
+function Container(){
     const container=useRef(null)
+    const [parentBoundary,setParentBoundary]=useState([])
+    const prevState=useRef(parentBoundary)
     useEffect(()=>{
-        console.log(JSON.stringify(container.current.getBoundingClientRect()))
+        console.log("parentBoundary : ",parentBoundary)
+        const boundary=container.current.getBoundingClientRect()
+        console.log(JSON.stringify(boundary))
+        if (JSON.stringify(boundary) !==JSON.stringify(prevState.current)|parentBoundary.length===0){
+            console.log("setParentBoundary")
+            setParentBoundary([boundary.top,boundary.right,boundary.bottom,boundary.left])
+            prevState.current=boundary
+        }
+        
+        
 
     })
     return (
-        <div ref={container} height={100} width={200}>
+        <div ref={container} className="container" >
+            {console.log("container rendering")}
             <Suspense>
-                <Card/>
+                {console.log("Suspense rendering",parentBoundary)}
+                <Card position={parentBoundary} />
             </Suspense>
         </div>
 
