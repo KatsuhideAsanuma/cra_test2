@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 //import { bindActionCreators } from 'redux';
 import {addToDo,removeToDo} from './actions';
-import Container from './Container';
+import Container from './ClassContainer';
 
 
 import './App.css';
